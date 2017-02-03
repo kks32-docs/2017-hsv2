@@ -1,0 +1,114 @@
+\documentclass[fleqn,10pt]{wlscirep}
+\usepackage{cleveref}
+\usepackage{booktabs}
+\usepackage{tabulary}
+\title{Network analysis of the hominin origin of Herpes Simplex virus 2 from fossil data}
+%\shorttitle{Hominin origin of HSV2}
+\author[1,2]{Simon Underdown}
+\author[3]{Krishna Kumar}
+\author[4,5,*]{Charlotte Houldcroft}
+\affil[1]{Human Origins and Palaeoenvironmental Research Group (HOPE), Department of Anthropology \& Geography, Oxford Brookes University, Oxford, OX3 0BP, UK.}
+\affil[2]{Leverhulme Centre for Human Evolutionary Studies, University of Cambridge, Henry Wellcome Building, Fitzwilliam Street, Cambridge, CB2 1QH, UK.}
+\affil[3]{Computational Geomechanics, Cambridge University Engineering Department, Trumpington Street, Cambridge, CB2 1PZ, UK.}
+\affil[4]{Division of Biological Anthropology, Department of Archaeology \& Anthropology, University of Cambridge, Cambridge, CB2 3QG, UK.}
+\affil[5]{McDonald Institute for Archaeological Research, University of Cambridge, Downing Street, Cambridge, CB2 3ER, UK.}
+
+\affil[*]{ch504@cam.ac.uk}
+
+%\keywords{Keyword1, Keyword2, Keyword3}
+
+\begin{abstract}
+Herpes simplex virus 2 is a human herpesvirus found worldwide that causes genital lesions and more rarely causes encephalitis. This pathogen is most common in Africa, and particularly in central and east Africa, an area of particular significance for the evolution of modern humans. Unlike HSV1, HSV2 has not simply co-speciated with humans from their last common ancestor with primates. HSV2 jumped the species barrier between 1.4 and 3 MYA, most likely through an intermediate but unknown hominin species. 
+
+In this paper, we use probability-based network analysis to determine the probable path between intermediate hosts of HSV2, from chimpanzees to modern humans, using paleoenvironmental data on the distribution of African tropical rainforest over the last 3 million years and data on the age and distribution of fossil species of hominin present in Africa between 1.4 and 3 MYA. Our model identifies \textit{Homo rudolfensis} as the most likely intermediate host of HSV2
+\end{abstract}
+\begin{document}
+
+\flushbottom
+\maketitle
+%
+\thispagestyle{empty}
+
+\section*{Introduction}
+
+Herpes simplex virus 2 (HSV2) is a sexually transmitted human pathogen that causes genital lesions and, rarely, encephalitis (eg \cite{Tang2003}), and is associated with increased risk of HIV acquisition~\cite{Freeman2006}. After primary infection, the virus adopts a life cycle of latency punctuated by periods of lytic replication when new hosts can be infected through genital contact. The virus is related to the human oral pathogen herpes simplex virus 1 (HSV1). Both HSV1 and HSV2 are alphaherpesviruses, which are found in many primates~\cite{Wertheim2014}.
+
+HSV2 was originally thought to have co-speciated with humans when our lineage diverged from that of chimpanzees, but recent comparisons of the HSV1, HSV2 and chimpanzee herpesvirus~\cite{Tang2003} (ChHV1) genomes suggests that HSV2 is in fact more closely related to ChHV1 than HSV13. This analysis also found that HSV2 diverged from ChHV1 between 1.4 and 3 MYA, and the authors inferred that an intermediate hominin served as a host for HSV2 before it introgressed into the ancestors of modern humans.
+
+We argue that by combining fossil data on when and where different hominin species were likely to be present in Africa, the geographical range of modern chimpanzees and bonobos, and the reconstructed distribution of tropical rainforest habitat as a proxy for the past range of the chimp/bonobo ancestor, it will be possible to develop a model to statistically infer the species that facilitated the introgression of HSV2 in the modern human lineage defined here as beginning with \textit{Homo erectus}~\cite{Anton2016}. The ancestor-descendant relationship between \textit{Homo erectus} at c. 2.0 MYA and \textit{Homo sapiens} c. 200 KYA is an evolutionarily secure route of transmission for HSV2 to leave Africa as a modern human-borne virus. This produces a window of infection time that closes with the dispersal of \textit{Homo sapiens} out of Africa no later than 100 KYA~\cite{MirazonLahr2016}
+
+\section*{Results}
+
+The A* optimal graph traversal algorithm was used to evaluate the most probable intermediary host(s) of HSV2 between the ancestors of modern chimpanzees and bonobos (ancestral-chimpanzees or anc-chimps) and the ancestors of modern humans. Directed Acyclic Graphs (DAGs) linking potential HSV2 transmission hominins were developed, with edges representing the possible direction of transmission between different hominins. Two mathematical models: the Infection Prevalence (HSV2-IP) model and the Infection Transmission (HSV2-IT) model, were developed for estimating the probability of HSV2 infection/transmission between species based on their geo-spatial and temporal distributions and their proximity to rainforest. These probability models were used to populate the DAG edge costs and node heuristics. Bayesian network inference of the DAG was also used to determine the most probable intermediary hosts. Both the A* algorithm~\cref{fig:dag-ip,fig:dag-it} and the Bayesian network inference identified \textit{Homo rudolfensis} as the most probable intermediary host that transmitted HSV2 from ancestral-chimpanzees to the ancestors of modern humans. \Cref{table:hsv2} shows the probable HSV2 intermediary routes and their rankings based on the infection transmission models and Bayesian network inference.
+
+\begin{table}
+\caption{Probable intermediary hosts for HSV2 transmission}
+\centering
+\renewcommand{\arraystretch}{1.5}
+\label{table:hsv2}
+\begin{tabulary}{\linewidth}{LCCC}
+\toprule
+Disease Transmission Route & 
+HSV2-IP route ranking
+(normalised path cost) & 
+HSV2-IT route ranking
+(normalised path cost) & 
+Bayesian inference (probability)
+ \\ 
+\midrule
+anc-chimp $\Rightarrow$ \textit{rudolfensis} $\Rightarrow$ \textit{erectus} & \textbf{1 (0.0 \%)} & \textbf{1 (0.0 \%)} & \textbf{11.59\%} \\
+
+anc-chimp $\Rightarrow$ \textit{boisei} $\Rightarrow$ \textit{erectus} & 2 (6.24 \%) & 4 (4.03 \%) & 9.28\% \\
+
+anc-chimp $\Rightarrow$ \textit{habilis}  $\Rightarrow$ \textit{boisei} $\Rightarrow$ \textit{erectus} & 3 (7.97 \%) & 2 (1.92 \%) & 5\% \\
+
+anc-chimp $\Rightarrow$ \textit{habilis} $\Rightarrow$ \textit{erectus} & 4 (10.91 \%) & 3 (3.39 \%) & 7.8\% \\
+\bottomrule
+\multicolumn{4}{l}{* \% path cost represents the normalised value with respect to the most and the least probable route.}\\
+\multicolumn{4}{l}{The most probable route has a 0\% cost, and least probable route has an 100\% cost.}
+\end{tabulary}
+\end{table}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{figs/dag-ip}
+  \caption{A* shortest path for HSV2 Infection Prevalence (HSV2-IP) model}
+  \label{fig:dag-ip}   
+\end{figure}  
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{figs/dag-it}
+  \caption{A* shortest path for HSV2 Infection Transmission (HSV2-IT) model}
+  \label{fig:dag-it}   
+\end{figure}     
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{figs/chimpanzee}
+  \caption{Distribution of Chimpanzee [IUCN redlist \url{http://maps.iucnredlist.org/map.html?id=15933}, \url{http://maps.iucnredlist.org/map.html?id=15932}] and fossils}
+  \label{fig:chimpanzee}   
+\end{figure}     
+
+Fossils from four genera (Ardipithecus, Kenyanthropus, Orrorin and Sahelanthropus) were excluded from the analysis on the basis that there is no fossil evidence that they persisted after 3 MYA. Our range of candidate species can be restricted to those in \textbf{supplementary table 1}.
+
+We then used further data on geo-temporal proximity of one species to another to develop mathematical models to quantify the probability of HSV2 infection transmission so as to assess the likelihood that each of these species further transmitted HSV2 to another hominin (see methodology section for further detail of the model). If HSV2 was transmitted to \textit{Homo erectus}, parsimony militates against the need for a further cross-species transmission event to be invoked to explain the infection of modern humans by HSV2. Simple vertical mother-to-child or horizontal (sexual) transmission of the virus through the genus Homo from this point would be sufficient as the ancestor-descendent path from \textit{Homo erectus} to \textit{Homo sapiens} is relatively secure~\cite{Maslin2015}.
+
+\section*{Discussion}
+\subsection*{Transmission of HSV2}
+Our analysis suggests that \textit{Homo rudolfensis} was the most likely intermediate host of HSV2 between chimpanzees and the ancestors of \textit{Homo sapiens}. The combined inference analysis of a Bayesian Network, considering the presence of HSV2 in both ancestral-chimpanzees and \textit{Homo erectus}, revealed \textit{A~afarensis} (90.33\%), \textit{H~habilis} (60.85\%), \textit{P~boisei} (57.3\%), and \textit{H~rudolfensis} (42.6\%) to be the likely intermediary hosts. However, \textit{A~afarensis} could only transmit to \textit{A~africanus}, which had a mere 6\% chance of being infected by HSV2. This narrowed the possibility of transmission through \textit{H~habilis}, \textit{P~boisei} and \textit{H~rudolfensis}, either directly or as intermediary hosts. Infection Prevalence (HSV2-IP) describes the probability of HSV2 infection based on the proximity to the rain forest habitat and the duration (difference between the first and the last appearance datum) using a beta distribution. While, the Infection Transmission (HSV2-IT) model assigns probability values (edge costs) to the DAG utilising the temporal overlap between hominin species and their geographic proximity to one another. The A* algorithm estimated the minimum path costs of 0.252 and 0.87 for the transmission route through \textit{Homo rudolfensis} for both HSV2-IP and HSV2-IT based DAGs, respectively. Bayesian network inference analysis estimated the highest probability of HSV2 transmission (11.6\%) to the ancestors of \textit{Homo sapiens} through \textit{rudolfensis}. Transmission through \textit{boisei} and \textit{habilis} was estimated to be 9.3\% and 7.8\% probable. A* optimal path traversals also predicted \textit{boisei} and \textit{habilis} to be the second (~5\% less likely than \textit{rudolfensis}) and the third (~7\% less likely than \textit{rudolfensis}) most probable routes. These algorithms predict a single intermediate hominin to be more likely than multiple-levels of transmissions. The A* algorithm and the Bayesian network inference have clearly demonstrated that \textit{Homo rudolfensis} is the most likely intermediate hominin host.  
+
+Tropical refugia during hot dry periods may have driven chimpanzees into higher concentrations in certain areas, driving them into contact and competition with \textit{Homo rudolfensis}. Violent confrontation or predation in combination with hunting and butchery practices would have provided a viable route of transmission for HSV2.  While no stone tools have to date been found in the same archaeological strata as \textit{Homo rudolfensis} fossils it is a logical  assumption that they would have been extensively used by this species~\cite{Ungar2006,DelaTorre2003} as Oldowan or Mode 1 stones tools are widely distributed in the same spatial-temporal localities as \textit{Homo rudolfensis} fossils~\cite{stern1993structure,Leakey2012}. \textit{Paranthropus aethiopicus}, \textit{P.~boisei}, and \textit{P.~robustus} are associated with the Olduwan stone tool complex~\cite{DeHeinzelin1999}, and \textit{P~boisei} explicitly with butchery~\cite{Dominguez-Rodrigo2013} lending support to the hypothesis that bushmeat hunting and butchery may have led to the initial transmission of HSV2 to the hominins. \textit{A~afarensis}, although a tool user, can be excluded both on statistical grounds and by the lack of evidence for hunting and butchery within this species which instead used tools to scavenge the carcasses left behind by savannah predators~\cite{Dominguez-Rodrigo2010,Domalain2016}.
+
+Although ChHV1 causes outbreaks of oral and pharyngeal lesions in chimpanzees in a manner similar to HSV1, in hominins contracting the virus which was to become HSV2, the oral niche was already occupied by HSV1. This may have protected the hominin first infected with HSV2: pre-existing infection with HSV1 reduces the likelihood that subsequent infection with HSV2 will be symptomatic15, and also reduces the risk of HSV2 meningitis16. HSV2 may have been forced to adapt to a different mucosal niche in order to reduce competition from the co-evolved, native HSV1.
+
+We suggest that the mode of transmission of HSV2 into hominins was most likely through hunting injuries (eg chimpanzee bites or cuts sustained during meat processing), although onwards transmission into the ancestors of \textit{Homo sapiens} could have been sexual (horizontal) or a result of hunting injuries (vertical). There are many reports of transmission of B virus (\textit{Cercopithecine herpesvirus 1}), the cercopith homolog of HSV1 and ChHV1, to humans, where disease ranges from mild to fatal. Transmission has occurred from bites and scratches, needle sticks and even scratches from cage bars that are contaminated with B virus-positive bodily fluids~\cite{Huff2003}. Onwards transmission between humans has been reported to occur~\cite{CentersforDiseaseControlCDC1987}. Human herpesvirus 1 can infect other primates, from gorillas~\cite{Gilardi2014} to owl monkeys~\cite{Melendez1969}, typically causing fatal disease in species more distantly related to Homo sapiens, while causing oral lesions and milder disease in great apes such as Gorilla \textit{beringei graueri}~\cite{Gilardi2014}. We therefore infer that herpes simplex-like viruses spread relatively easily between individuals even across species barriers, increasing the chances of transmission between hominins and other primates from close contact such as hunting, butchery, inter-personal violence or sexual contact. Evidence for close hominin-hominid contact is also found in other `heirloom' human pathogens \textbf{[Houldcroft, Ramond, Rifkin \& Underdown, 2017, in press]}.
+
+The high prevalence of HSV2 in central and eastern Africa (\textbf{supplementary figure 1 }and interactive maps at \url{https://github.com/wadhamite/hsv-mapping}) is consistent with the limited genetic data available from African HSV2 isolates. A study from Burrel and colleagues~\cite{Burrel2015} showed that HSV2 can be divided into African and worldwide lineages on the basis of diversity in gene UL30. Furthermore, they found evidence of gene flow from HSV1 into HSV2, and speculate that the flow of HSV1 loci into the worldwide HSV2 lineage may have helped this lineage of HSV2 to further adapt to human hosts, and so spread more successfully around the world from around 41kya~\cite{Burrel}. Two recent studies have significantly increased the number of whole HSV2 genomes available for analysis, contributing to our knowledge of HSV2 diversity~\cite{Szpara2014,Kolb2015}, however precise geographic origins of each sample are not available. More whole HSV2 genomes from central and east Africa, with clear country of origin data, are needed to enrich this picture, as our model predicts that individuals from east Africa are also likely to carry ancient HSV2 lineages. 
+
+The time-depth of ancient DNA analysis is dually limited by technology and preservation of DNA. Similarly the archaeological and fossil records suffer from differential rates of preservation and gaps that can never be filled because the material has simply not survived.  Our analysis has allowed the reconstruction of hominin/human-disease interaction well beyond the horizon of ancient DNA and at a level that is invisible to the fossil and archaeological records. Demonstrating the potential for using modern disease genetics to better understand the evolutionary interaction between humans and disease in deep time.
+
+
+\bibliography{references}
+
+\end{document}
