@@ -9,6 +9,6 @@ install:
    - sudo apt-get install -y texlive-fonts-recommended texlive-fonts-extra
    - sudo apt-get install -y psutils latexmk
 script:
-   - latexmk -pdf paper.tex
+   - latexmk -pdf main.tex
 notifications:
   slack: kks32:vsrIj5wVAmBbEQDpldE2GxcH
