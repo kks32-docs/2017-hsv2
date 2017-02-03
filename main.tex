@@ -1,7 +1,10 @@
 \documentclass[fleqn,10pt]{wlscirep}
-\usepackage{cleveref}
+% Packages
 \usepackage{booktabs}
+\usepackage{cleveref}
+\usepackage{longtable}
 \usepackage{tabulary}
+
 \title{Network analysis of the hominin origin of Herpes Simplex virus 2 from fossil data}
 %\shorttitle{Hominin origin of HSV2}
 \author[1,2]{Simon Underdown}
@@ -172,6 +175,8 @@ SJU was funded by Oxford Brookes University. KK and CH were funded by the Univer
 \section*{Supplementary material}
 \renewcommand\thefigure{A.\arabic{figure}}    
 \setcounter{figure}{0} 
+\renewcommand\thetable{A.\arabic{figure}}    
+\setcounter{table}{0} 
 
 \begin{figure}[!h]
 	\centering
@@ -180,5 +185,76 @@ SJU was funded by Oxford Brookes University. KK and CH were funded by the Univer
 	\label{fig:hsv2}   
 \end{figure}  
 
+
+\begin{longtable}{p{0.15\textwidth} p{0.17\textwidth} p{0.2\textwidth} p{0.13\textwidth} p{0.25\textwidth}}
+	\caption{Fossil hominins with the potential to acquire - HSV2 from chimpanzee.\label{table:hsv2species}}\\
+	
+	% First page header
+	\toprule
+	Species &  Type specimen & 	Locations (type specimen) &  Age (000s BP) & Publication (suggesting a new species)\\ 
+    \midrule
+	\endfirsthead
+	
+	% Subsequent page headers
+	\toprule
+	\multicolumn{5}{l}{~\Cref{table:hsv2species} \textit{-- continued}}\\
+	\midrule
+	Species &  Type specimen & 	Locations (type specimen) &  Age (000s BP) & Publication (suggesting a new species)\\ 
+	\midrule
+	\endhead
+	
+	% Footer to say continued on next page
+	\midrule
+	\multicolumn{5}{r}{Continued on next page}\\
+	\midrule
+	\endfoot
+	
+	% Footer on the last page of the table
+	\bottomrule
+	\endlastfoot
+
+	\textit{Sahelanthropus tchadensis} & TM 266-01-060-1 (cranium) & 
+	North Central Africa (Toros-Menalla locality, Western Djurab Desert, N. Chad) & 
+	7000-6000 & Brunet M et al 2002 A new hominid from the Upper Miocene of Chad, Central Africa. \textit{Nature 418: 145-151}.\\
+	
+	
+	\textit{Orrorin tugensis} & BAR 1000’00 (frag. mandible) &
+	East Africa (Lukeino Formation, Baringo, Kenya) & 6000 (Late Miocene) &
+	Senut B et al 2001
+	First hominid from the Miocene (Lukeino Formation, Kenya). \textit{C.R. Acad. Sci. Paris, Sciences de la Terre et des planets 332: 137-144.}\\
+	
+	
+	\textit{Ardipithecus ramidus} & ARA-VP-6/1 (teeth) &
+	East Africa (Aramis, Ethiopia) & 5500 - 4400 &
+	White TD, Suwa G and Asfaw B 1994 Australopithecus ramidus, a new species of early hominid from Aramis, Ethiopia. \textit{Nature 371: 306-312.}\\
+	
+	
+	\textit{Australopithecus anamensis} & KP 271 (humerus) &
+	East Africa (Kanapoi, Kenya) & 4200 - 3900 &
+	Patterson B and Howells WW 1967 Hominid humeral fragment from early Pleistocene of north-western Kenya. \textit{Science 156: 64-66.}\\
+	
+	
+	\textit{Australopithecus afarensis} & LH4 (mandible) &
+	East Africa (Laetoli, Tanzania) & 3900 - 2800 & 
+	Johanson DC, White TD and Coppens Y 1978 A new species of the genus Australopithecus (Primates: Hominidae) from the Pliocene of eastern Africa. \textit{Kirtlandia 28: 2-14.}\\
+	
+	
+	\textit{Australopithecus bahrelghazali} & KT 12/H1 (mandible) &
+	Central Africa (Bahr el Ghazal, Chad) & 3400 - 3000 &
+	Brunet M, Beauvilian A, Coppens Y, Heintz E, Moutaye AHE and Pilbeam D 1995 The first australopithecine 2,500 kilometres west of the Rift Valley (Chad). \textit{Nature 378: 273-275.}\\
+	
+	
+	\textit{Australopithecus africanus} & Taung 1 (cranium) &
+	Southern Africa (Taung, SA) & 2800 - 2300 &
+	Dart RA 1925 Australopithecus africanus: The man-ape of South Africa. \textit{Nature 115: 195-199.}\\
+	
+	
+	\textit{Australopithecus gahri} & BOU-VP-12/130 (cranium) &
+	East Africa (Bouri, Ethiopia) & 2500 &
+	Asfaw B, White T, Lovejoy O, Latimer B,. Simpson S and Suwa G 1999 Australopithecus garhi: A new species of early hominid from Ethiopia. \textit{Science 284: 629-635.}\\
+		
+	
+		
+\end{longtable}
 
 \end{document}
