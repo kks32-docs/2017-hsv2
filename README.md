@@ -2,7 +2,9 @@
 > Simon Underdown, Krishna Kumar, and Charlotte Houldcroft
 
 [![Build Status](https://api.travis-ci.org/kks32-docs/2017-hsv2.svg)](https://travis-ci.org/kks32-docs/2017-hsv2)
-[![License CC-By-NC-4.0](http://img.shields.io/badge/license-CC-By-NC-4.0-brightgreen.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+[![License CC-By-NC-4.0](https://img.shields.io/badge/license-CC--By--NC--4.0-brightgreen.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+
+![BioRxiv](http://biorxiv.org/content/early/2017/02/02/105007)
 
 
 ## Abstract
