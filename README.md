@@ -4,9 +4,7 @@
 [![Build Status](https://api.travis-ci.org/kks32-docs/2017-hsv2.svg)](https://travis-ci.org/kks32-docs/2017-hsv2)
 [![License CC-By-NC-4.0](https://img.shields.io/badge/license-CC--By--NC--4.0-brightgreen.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
-[BioRxiv](http://biorxiv.org/content/early/2017/02/02/105007)
-
-[doi](https://doi.org/10.1101/105007)
+[![doi](https://img.shields.io/badge/doi-BioRxiv-brightgreen.svg)](https://doi.org/10.1101/105007)
 
 
 ## Abstract
