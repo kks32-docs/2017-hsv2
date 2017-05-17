@@ -44,9 +44,6 @@
 
 \RequirePackage[colorlinks=true, allcolors=blue]{hyperref}
 
-% Set up of the bibliography style
-\RequirePackage[backend=biber, style=authoryear, citestyle=alphabetic,sorting=nty, natbib=true]{biblatex}
-
 % headers and footers
 %
 \RequirePackage{fancyhdr}  % custom headers/footers
