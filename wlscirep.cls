@@ -45,13 +45,8 @@
 \RequirePackage[colorlinks=true, allcolors=blue]{hyperref}
 
 % Set up of the bibliography style
+\RequirePackage[backend=biber, style=authoryear, citestyle=alphabetic,sorting=nty, natbib=true]{biblatex}
 
-%\RequirePackage[numbers]{natbib}
-\RequirePackage[superscript,biblabel,nomove]{cite}
-%% Nov 3, 2016: Support DOI
-\bibliographystyle{naturemag-doi}
-              
-%
 % headers and footers
 %
 \RequirePackage{fancyhdr}  % custom headers/footers
@@ -134,7 +129,7 @@
 %\setlist{nolistsep} % Uncomment to remove spacing between items in lists (enumerate, itemize)
 
 % Remove brackets from numbering in List of References
-\renewcommand{\@biblabel}[1]{\bfseries\color{color1}#1.}
+%\renewcommand{\@biblabel}[1]{\bfseries\color{color1}#1.}
 
 %
 % article meta data
@@ -198,9 +193,9 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 
 \usepackage{lipsum} % Required to insert dummy text
 %-----------------------------------------------
-\let\oldbibliography\thebibliography
-\renewcommand{\thebibliography}[1]{%
-\addcontentsline{toc}{section}{\hspace*{-\tocsep}\refname}%
-\oldbibliography{#1}%
-\setlength\itemsep{0pt}%
-}
+%\let\oldbibliography\thebibliography
+%\renewcommand{\thebibliography}[1]{%
+%\addcontentsline{toc}{section}{\hspace*{-\tocsep}\refname}%
+%\oldbibliography{#1}%
+%\setlength\itemsep{0pt}%
+%}
