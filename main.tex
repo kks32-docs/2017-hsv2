@@ -176,9 +176,9 @@ PDF: \frac{x^{\alpha - 1}(1 - x)^{\beta - 1}}{B(\alpha, \beta)} \qquad \mathrm{w
 Where, $\Gamma$ defines a gamma distribution function, $\alpha$ is the time period of existence of the species in 100,000 years and $\beta$ is the spatial distance of the fossil from the rainforest in kilometres. Monte-carlo simulations were performed to sample from the distributions to populate the edge costs. A minimum overlap threshold of 10\% is considered for possible transmission of HSV2 from one species to another. 
 
 \subsubsection*{Stochastic modelling of infection transmission}
-The Susceptible - Infection - Recovered (SIR)~\cite{callahanspread} is one of the most widely used model in epidemiological system. In the stochastic version of the SIR model, the continuous variables are replaced by discrete numbers, and the process rates are replaced by process probabilities. At time `t` the probability of a new susceptible host is infected is modelled as an exponential distribution, which is epidemiologically incorrect for most diseases~\cite{Wearing2005,Bailey1975,sartwell1950distribution}, i.e., the rate of leaving the exposed is independent of the time spent on the host. Wearing et al~\cite{Wearing2005} suggested a more realistic distribution of latent and infectious periods, with a stronger central tendency:
+The Susceptible - Infection - Recovered (SIR)~\cite{callahanspread} is one of the most widely used model in epidemiological system. In the stochastic version of the SIR model, the continuous variables are replaced by discrete numbers, and the process rates are replaced by process probabilities. At time `t' the probability of a new susceptible host is infected is modelled as an exponential distribution, which is epidemiologically incorrect for most diseases~\cite{Wearing2005,Bailey1975,sartwell1950distribution}, i.e., the rate of leaving the exposed is independent of the time spent on the host. Wearing et al~\cite{Wearing2005} suggested a more realistic distribution of latent and infectious periods, with a stronger central tendency:
 
-\begin{table*}
+\begin{table*}[!h]
 	\centering
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabulary}{\linewidth}{LCCCC}
