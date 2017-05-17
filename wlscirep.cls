@@ -46,11 +46,11 @@
 
 % Set up of the bibliography style
 
-%\RequirePackage[numbers]{natbib}
-\RequirePackage[superscript,biblabel,nomove]{cite}
+%\RequirePackage{natbib}
+\RequirePackage[	biblabel,nomove]{cite}
 %% Nov 3, 2016: Support DOI
-\bibliographystyle{naturemag-doi}
-              
+%\bibliographystyle{naturemag-doi}
+\bibliographystyle{apalike}              
 %
 % headers and footers
 %
@@ -198,9 +198,9 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 
 \usepackage{lipsum} % Required to insert dummy text
 %-----------------------------------------------
-\let\oldbibliography\thebibliography
-\renewcommand{\thebibliography}[1]{%
-\addcontentsline{toc}{section}{\hspace*{-\tocsep}\refname}%
-\oldbibliography{#1}%
-\setlength\itemsep{0pt}%
-}
+%\let\oldbibliography\thebibliography
+%\renewcommand{\thebibliography}[1]{%
+%\addcontentsline{toc}{section}{\hspace*{-\tocsep}\refname}%
+%\oldbibliography{#1}%
+%\setlength\itemsep{0pt}%
+%}
