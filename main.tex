@@ -91,26 +91,25 @@ The A* optimal graph traversal algorithm was used to evaluate the most probable 
 \centering
 \renewcommand{\arraystretch}{1.5}
 \label{table:hsv2}
-\begin{tabulary}{\linewidth}{LCCC}
+\begin{tabulary}{\linewidth}{LCC}
 \toprule
 Disease Transmission Route & 
 HSV2-IP route ranking
 (normalised path cost) & 
 HSV2-IT route ranking
-(normalised path cost) & 
-Bayesian inference (probability)
- \\ 
+(normalised path cost) \\ 
 \midrule
-anc-chimp $\Rightarrow$ \textit{rudolfensis} $\Rightarrow$ \textit{erectus} & \textbf{1 (0.0 \%)} & \textbf{1 (0.0 \%)} & \textbf{11.59\%} \\
+anc-chimp $\Rightarrow$ \textit{boisei} $\Rightarrow$ \textit{erectus} & \textbf{1 (1.0)} & 3 (1.14)\\
 
-anc-chimp $\Rightarrow$ \textit{boisei} $\Rightarrow$ \textit{erectus} & 2 (6.24 \%) & 4 (4.03 \%) & 9.28\% \\
 
-anc-chimp $\Rightarrow$ \textit{habilis}  $\Rightarrow$ \textit{boisei} $\Rightarrow$ \textit{erectus} & 3 (7.97 \%) & 2 (1.92 \%) & 5\% \\
+anc-chimp $\Rightarrow$ \textit{habilis}  $\Rightarrow$ \textit{boisei} $\Rightarrow$ \textit{erectus} & 4 (1.13) & \textbf{1 (1.0)} \\
 
-anc-chimp $\Rightarrow$ \textit{habilis} $\Rightarrow$ \textit{erectus} & 4 (10.91 \%) & 3 (3.39 \%) & 7.8\% \\
+anc-chimp $\Rightarrow$ \textit{habilis} $\Rightarrow$ \textit{erectus} & 2 (1.20) & 2 (1.05) \\
+
+anc-chimp $\Rightarrow$ \textit{rudolfensis} $\Rightarrow$ \textit{erectus} & 3 (1.24) & 4 (1.54) \\
+
 \bottomrule
-\multicolumn{4}{l}{* \% path cost represents the normalised value with respect to the most and the least probable route.}\\
-\multicolumn{4}{l}{The most probable route has a 0\% cost, and least probable route has an 100\% cost.}
+\multicolumn{3}{l}{* The most probable route has a cost of 1. The path costs are normalised to the shortest path.}
 \end{tabulary}
 \end{table}
 
