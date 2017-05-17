@@ -35,9 +35,11 @@
 \usepackage{tabulary, booktabs, longtable, ltcaption, ltabptch}
 %\usepackage[referable]{threeparttablex}
 \usepackage{gensymb}
+\usepackage{subcaption}
+\captionsetup{compatibility=false}
 
 % Set up of the bibliography style
-\RequirePackage[backend=biber, style=authoryear, citestyle=authoryear, sorting=nty, natbib=true, doi=false,isbn=false,url=false]{biblatex}
+\RequirePackage[backend=biber, style=authoryear, citestyle=authoryear, sorting=nty, natbib=true, doi=true, isbn=true, url=false]{biblatex}
 
 
 \title{Network analysis of the hominin origin of Herpes Simplex virus 2 from fossil data}
@@ -86,12 +88,13 @@ We argue that by combining fossil data on when and where different hominin speci
 
 The A* optimal graph traversal algorithm was used to evaluate the most probable intermediary host(s) of HSV2 between the ancestors of modern chimpanzees and bonobos (ancestral-chimpanzees or anc-chimps) and the ancestors of modern humans. Directed Acyclic Graphs (DAGs) linking potential HSV2 transmission hominins were developed, with edges representing the possible direction of transmission between different hominins. Two mathematical models: the Infection Prevalence (HSV2-IP) model and the Infection Transmission (HSV2-IT) model, were developed for estimating the probability of HSV2 infection/transmission between species based on their geo-spatial and temporal distributions and their proximity to rainforest. These probability models were used to populate the DAG edge costs and node heuristics. Bayesian network inference of the DAG was also used to determine the most probable intermediary hosts. Both the A* algorithm~\cref{fig:dag-ip,fig:dag-it} and the Bayesian network inference identified \textit{Homo rudolfensis} as the most probable intermediary host that transmitted HSV2 from ancestral-chimpanzees to the ancestors of modern humans. \Cref{table:hsv2} shows the probable HSV2 intermediary routes and their rankings based on the infection transmission models and Bayesian network inference.
 
+
 \begin{table}
 \caption{Probable HSV2 transmission routes}
 \centering
 \renewcommand{\arraystretch}{1.5}
 \label{table:hsv2}
-\begin{tabulary}{\linewidth}{LCC}
+\begin{tabular}{l m{0.25\textwidth} m{0.25\textwidth}}
 \toprule
 Disease Transmission Route & 
 HSV2-IP route ranking
@@ -99,17 +102,39 @@ HSV2-IP route ranking
 HSV2-IT route ranking
 (normalised path cost) \\ 
 \midrule
-anc-chimp $\Rightarrow$ \textit{boisei} $\Rightarrow$ \textit{erectus} & \textbf{1 (1.0)} & 3 (1.14)\\
+anc-chimp $\Rightarrow$ \textit{P. boisei} $\Rightarrow$ \textit{H. erectus} & \textbf{1 (1.0)} & 3 (1.14)\\
 
 
-anc-chimp $\Rightarrow$ \textit{habilis}  $\Rightarrow$ \textit{boisei} $\Rightarrow$ \textit{erectus} & 4 (1.13) & \textbf{1 (1.0)} \\
+anc-chimp $\Rightarrow$ \textit{H. habilis}  $\Rightarrow$ \textit{P. boisei} $\Rightarrow$ \textit{H. erectus} & 4 (1.13) & \textbf{1 (1.0)} \\
 
-anc-chimp $\Rightarrow$ \textit{habilis} $\Rightarrow$ \textit{erectus} & 2 (1.20) & 2 (1.05) \\
+anc-chimp $\Rightarrow$ \textit{H. habilis} $\Rightarrow$ \textit{H. erectus} & 2 (1.20) & 2 (1.05) \\
 
-anc-chimp $\Rightarrow$ \textit{rudolfensis} $\Rightarrow$ \textit{erectus} & 3 (1.24) & 4 (1.54) \\
+anc-chimp $\Rightarrow$ \textit{H. rudolfensis} $\Rightarrow$ \textit{H. erectus} & 3 (1.24) & 4 (1.54) \\
 
 \bottomrule
 \multicolumn{3}{l}{* The most probable route has a cost of 1. The path costs are normalised to the shortest path.}
+\end{tabular}
+\end{table}
+
+
+\begin{table}
+\caption{Sobol indices of transmission paths for HSV2-IT model using gamma distribution}
+\centering
+\renewcommand{\arraystretch}{1.5}
+\label{table:sobol}
+\begin{tabulary}{\linewidth}{LCC}
+\toprule
+Disease Transmission Route & 
+Sobol total-order indices & 
+Sobol first-order indices \\ 
+\midrule
+anc-chimp $\Rightarrow$ \textit{P. boisei} & 0.640 & 0.454\\
+
+
+anc-chimp $\Rightarrow$ \textit{H. habilis} & 0.519 & 0.334 \\
+
+\textit{P. boisei} $\Rightarrow$ \textit{H. erectus} & 0.0262 & 0.0262 \\
+\bottomrule
 \end{tabulary}
 \end{table}
 
@@ -128,11 +153,51 @@ anc-chimp $\Rightarrow$ \textit{rudolfensis} $\Rightarrow$ \textit{erectus} & 3 
 \end{figure}     
 
 \begin{figure}
+\begin{subfigure}[b]{\textwidth}
   \centering
   \includegraphics[width=\textwidth]{figs/chimpanzee}
-  \caption{Distribution of Chimpanzee [IUCN redlist \url{http://maps.iucnredlist.org/map.html?id=15933}, \url{http://maps.iucnredlist.org/map.html?id=15932}] and fossils}
-  \label{fig:chimpanzee}   
+  \caption{Distribution of extant chimpanzee (Pan troglodytes) and bonobo (Pan paniscus) populations [IUCN redlist http://maps.iucnredlist.org/map.html?id=15933, http://maps.iucnredlist.org/map.html?id=15932]. The locations of hominin fossils [supplementary table 1] are shown with markers. The colour of the marker indicates the hominin genus; the symbol represents the species.}
+  \label{fig:chimpanzee}
+\end{subfigure}
+\end{figure}
+\begin{figure}
+\ContinuedFloat
+\begin{subfigure}[b]{\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{figs/rainforest}
+  \caption{Location of hominin fossils relative to ancient minimum and maximum rainforest distributions \citep{Peel2007}. These figure are available interactively: \url{https://wadhamite.github.io/hsv-mapping/}.}
+  \label{fig:rainforest}
+\end{subfigure}
+  \caption{Location of hominin fossils, extant chimpanzees, and ancient minimum and maximum rainforest distributions.}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{figs/beta_path_costs}
+  \caption{Path costs distribution for Infection Prevalence model. The shortest path is ‘anc-chimp $\Rightarrow$ \textit{P. boisei} $\Rightarrow$ \textit{H. erectus}’ with an average path cost 0.587.}
+  \label{fig:beta}   
 \end{figure}     
+
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\textwidth]{figs/gamma_individual_path_costs}
+  \caption{ Distribution of selected edge costs for Infection Transmission model. 
+Each histogram shows the distribution of edge costs for the IT model of HSV2 transmission. Colour contours indicate the number of occurrences of a path cost in the sensitivity analysis. The lowest edge costs are seen for ‘anc-chimp $\Rightarrow$ \textit{H. habilis}’, ‘anc-chimp $\Rightarrow$ \textit{P. boisei}’ and ‘\textit{P. boisei} $\Rightarrow$ \textit{H. erectus}’.}
+  \label{fig:gamma-paths}   
+\end{figure}     
+
+
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{figs/gamm_path_costs}
+  \caption{Path costs distribution for Infection Transmission model. Each histogram shows the distribution of path costs for the IT model of HSV2 transmission. Colour contours indicate the number of occurrences of a path cost in the sensitivity analysis. The optimal transmission route is ‘anc-chimp $\Rightarrow$ \textit{H. habilis} $\Rightarrow$ \textit{P. boisei} $\Rightarrow$ \textit{H. erectus}’. (a) Total distribution of path costs for HSV2-IT model, (b) distribution path costs for the primary transmission route (‘anc-chimp $\Rightarrow$ \textit{H. habilis} $\Rightarrow$ \textit{P. boisei} $\Rightarrow$ \textit{H. erectus}’), and (c) distribution path costs for the  secondary transmission route (‘anc-chimp $\Rightarrow$ \textit{P. boisei} $\Rightarrow$ \textit{H. erectus}’).}
+  \label{fig:gamma}   
+\end{figure}     
+
+
 
 Fossils from four genera (Ardipithecus, Kenyanthropus, Orrorin and Sahelanthropus) were excluded from the analysis on the basis that there is no fossil evidence that they persisted after 3 MYA. Our range of candidate species can be restricted to those in supplementary Table A.1.
 
