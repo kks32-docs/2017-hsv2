@@ -126,7 +126,7 @@ Where, $\Gamma$ defines a gamma distribution function, $\alpha$ is the time peri
  
 
 \subsubsection*{Stochastic modelling of infection transmission}
-The Susceptible - Infection - Recovered (SIR) is one of the most widely used model in epidemiological system. In the stochastic version of the SIR model, the continuous variables are replaced by discrete numbers, and the process rates are replaced by process probabilities. At time `t' the probability of a new susceptible host is infected is modelled as an exponential distribution, which is epidemiologically incorrect for most diseases~\cite{Wearing2005,Bailey1975,sartwell1950distribution}, i.e., the rate of leaving the exposed is independent of the time spent on the host. Wearing et al~\cite{Wearing2005} suggested a more realistic distribution of latent and infectious periods, with a stronger central tendency:
+The Susceptible - Infection - Recovered (SIR)~\citep{Chen2008} is one of the most widely used models in epidemiology to predict infection transmission. In the stochastic version of the SIR model, the continuous variables are replaced by discrete numbers, and the process rates are replaced by process probabilities. At time ‘t’ the probability that a new susceptible host is infected is modelled as an exponential distribution, which is epidemiologically incorrect for most diseases~\citep{Wearing2005,Bailey1975,sartwell1950distribution}, i.e., the rate of leaving the exposed is independent of the time spent on the host. \citet{Wearing2005} suggested a more realistic distribution of latent and infectious periods, with a stronger central tendency:
 
 \begin{table*}[!h]
 	\centering
@@ -138,15 +138,18 @@ The Susceptible - Infection - Recovered (SIR) is one of the most widely used mod
 	\end{tabulary}
 \end{table*}
 
-More realistic distributions can be obtained by choosing  probability density function of the infectious period,  p(t) to be a gamma probability density function\cite{Blythe1988,Lloyd2001}.
+More realistic distributions can be obtained by choosing  probability density function of the infectious period,  p(t) to be a gamma probability density function~\citep{Blythe1988,Lloyd2001}.
 
 \subsubsection*{Infection Transmission (HSV2-IT) model}
-This model utilising the temporal overlap between hominin species and their geographic proximity to one another to determine the probability of transmission using a gamma distribution. The probability density function of a gamma distribution is given as:
+The proposed Infection Transmission model considers the history of transmission, and the probability of routes (edges) and species (nodes) are dependant on the parent nodes and routes. The model utilises the temporal overlap between hominin species and their geographic proximity to one another to determine the probability of a transmission route, using a gamma distribution.  The probability density function of a gamma distribution is given as:
 
 \begin{equation}
 PDF:\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha - 1} \exp^{-\beta x}
 \end{equation}
-in terms of shape $\alpha$ and rate $\beta$. The parameters shape is defined as the ratio of the time period in 1000 years / distance in kilometers and  rate  is defined as the normalised time period $Y / x$, where $x$ is the time period of the species in 1000 years and $Y$ is the time period of anc-chimpanzees. Monte-carlo simulations were performed to evaluate the combined probability of transmission between species is evaluated as mutually exclusive events based on the probability distributions. 
+in terms of shape $\alpha$ and rate $\beta$. The shape parameter $\alpha$ is defined as the ratio of the time period in 1000 years / distance in kilometres and the rate parameter $\beta$ is defined as the normalised time period $Y / x$, where $x$ is the time period of the species in 1000 years and $Y$ is the time period of anc-chimps. Monte-Carlo simulations were performed to evaluate the conditional probability of transmission between species, as mutually exclusive events, considering the parent nodes by sampling from the respective probability distributions. For example, the probability of \textit{P. boisei} transmitting HSV2 to \textit{H. erectus} depends on the probabilities of \textit{P. Boisei} being infected by the anc-chimps and/or \textit{H. habilis} and/or \textit{H. rudolfensis}.
+
+\subsection*{Sensitivity analysis}
+Sensitivity analysis is performed to identify the impact of the probability distribution models in estimating the edge costs and in turn the optimal route of transmission. A variance-based global sensitivity analysis was performed using the Saltelli method, a variation of the Sobol technique, to evaluate the sensitivity indices of the transmission model~\citep{Sobol2001,Saltelli2010}. The sensitivity of each input is represented by a numeric value, called the sensitivity index. These indices are used to estimate the influence of individual variables or groups of variables on the model output, by decomposing the variance of the model output into fractions. A 10\% variance in the model inputs was assumed. A parametric space of edge costs was generated for the Sobol analysis by sampling 50,000 times from the probabilistic distribution for each edge. This generated a total of 2.3 million analyses for the sensitivity analysis for each transmission model. The first-order, second-order and the total-order indices were measured using a Python script with the \textit{SALib} package. 
 
 \section*{Results}
 
