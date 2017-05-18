@@ -88,6 +88,59 @@ Before \textit{Homo erectus} it is unclear which hominins are the direct ancesto
 
 HSV2 is found in all living populations~\citep{Looker2015}, is accepted as having an African origin~\citep{Koelle2017, Burrel2017}, and has patterns of genetic divergence consistent with having diverged with human populations as they spread out of Africa~\citep{Koelle2017}. Current genetic, archaeological and fossil evidence suggests 100 KYA as a plausible (although not universally accepted) earliest date for anatomically modern humans (AMH) to have left Africa ~\cite{MirazonLahr2016}. We therefore infer that HSV2 must have been in the population of AMH before they left Africa, in order to take it with them when migrating to the rest of the world.
 
+\section*{Methods}
+\subsection*{HSV2 prevalence data, hominin fossil data and chimpanzee and tropical rainforest geographic range data}
+
+HSV2 is most closely related to ChHV1 which infected the ancestors of modern chimpanzees. The GIS data on the range of modern \textit{Pan troglodytes} and \textit{Pan paniscus},  provided by the IUCN Red List~\citep{Oates2008}, is shown in~\cref{fig:chimpanzee}.  Only one ancestral chimpanzee fossil, dated to c. 500 KYA, is currently known~\citep{Mcbrearty2005}. This means that the habitat range of anc-chimps is not directly measurable from the fossil record but is inferred to be a larger geographical range. Therefore, we have used the paleo-tropical rainforest range during the period of 1.4 - 3 MYA K\"{o}ppen-Geiger climate classification dataset~\cite{Peel2007} as a proxy for the ancient range of chimpanzees and combined this with data based on modern great ape distribution patterns and range size estimates~\citep{Thompson2003}, and is shown in~\cref{fig:rainforest}. 
+
+To identify which species could have been involved in the host-switch of HSV2 from the ancestors of chimpanzees to the ancestors of modern humans, we collated spatio-temporal data on African hominin fossil species extant between 100 KYA and 3 MYA. Latitude and longitude of site location was used to provide a spatial data point for each species. Temporally, published fossil dating evidence was used to provide a first appearance datum (FAD) and last appearance datum (LAD) for each species (see supplementary Table 1).
+
+Data on the prevalence of herpes simplex virus 2 between 2000 and 2015 CE was taken from the supplementary materials of~\citep{Looker2015}, and plotted to demonstrate the distribution of HSV2 across Africa (Supplementary Figure A. 1). 
+
+\subsection*{Network analysis}
+
+To establish the most probable transmission route of HSV2 from chimpanzees to modern humans, it is important to identify potential species that may have been intermediary hosts. At first, hominins present within the 1.4 - 3 MYA confidence window of chimp-hominin transmission were identified. Their distance to tropical rainforest was calculated: only species with fossil remains found within 400 km of tropical rainforest were considered as putative species for initial ancestral-chimp-hominin HSV2 transmission. A matrix of spatio-temporal distances was then calculated to map distances between nearest neighbours of each species and also to calculate their temporal overlap within the fossil record. Network analysis was peformed using AI space graph search and decision network tools~\cite{poole2010artificial}.
+
+\subsubsection*{Optimal path traversal}
+A network of possible transmission routes of HSV2 from ancestral-chimpanzees to humans through different potential hominims was developed as a Directed Cyclic Graph (DAG) $G = (V, E)$ comprising of a set of nodes ($V$), representing potential intermediary hosts, and edges ($E$) connecting the nodes, which represents the direction of transmission between species. Infection Prevalence (HSV2-IP) and Infection Transmission (HSV2-IT) models assign probability value (edge costs) to the DAG utilising the temporal overlap between hominin species and their geographic proximity to rainforest habitat and one another. More details about the probability models are discussed in the next section. A Conditional Probability Table (CPT) is calculated to determine the nodal heuristics. Ancestral-chimpanzees and \textit{Homo erectus} formed the start node and the target node of the DAG. 
+
+The A* pathfinding algorithm~\cite{Hart1968} was used on the DAG to identify the most probable transmission (optimal path) route for HSV2. The A* algorithm is the most widely used path-finding algorithm. A* is an informed search algorithm that searches through all possible paths to the target that yields the smallest cost. This is done by combining information on favouring vertices that are close to the starting point and information on favouring vertices that are close to the goal. At each time-step A* algorithm selects the path at a given vertex $n$ that has the lowest $f(n) = g(n) + h(n)$. Where $g(n)$ represents the exact cost of the path from the starting point to any vertex $n$, and $h(n)$ represents the heuristic estimated cost from vertex $n$ to the goal. A* balances the two as it moves from the starting point to the goal. The A* algorithm evaluates the most probable transmission route, by minimising the traversal costs based on the edge cost and nodal heuristics of the transmission network graph.
+
+\subsubsection*{Bayesian inference}
+A Bayesian network or a belief network is a graphical structure that allows us to represent and reason about an uncertain domain. The nodes are variables, and edges represent direct links between nodes. The process of conditioning (also called probability propagation or inference) is performed via a ``flow of decisions'' through the network, which involves computing the posterior probability distribution for a set of query nodes, given values for some evidence (or observation) nodes. An important consideration in all Bayesian-based methods is the choice of a prior. An empirical Bayesian method that estimates the likelihood of HSV2 infection using a prior beta distribution, which is an approximation to a hierarchical Bayesian approach is adopted~\cite{Murphy2012,Farine2015}. Bayesian networks provide full representations of probability distributions over their variables, which allows to infer upon any subset of variables. A Conditional Probability Table (CPT) is generated for all possible combinations of a dichotomous outcome for each variable (HSV2 infection is true or false). The ``Combined Inference'' approach is adopted to evaluate the probable intermediary hosts, by conditioning the ancestral-chimpanzee and \textit{Homo erectus} nodes for the presence of HSV2. A ``Diagnostic reasoning''~\cite{Korb2003} was carried out to evaluate the most probable intermediate hosts for the transmission of HSV2 from ancestral-chimpanzees to \textit{Homo sapiens}. 
+
+\subsubsection*{HSV2-Infection Prevelance (HSV2-IP) model}
+This model describes the probability of HSV2 infection based on the proximity to the rain forest habitat and the duration (difference between the first and the last appearance datum)  using a beta distribution. The probability density function is defined as:
+
+\begin{equation}
+PDF: \frac{x^{\alpha - 1}(1 - x)^{\beta - 1}}{B(\alpha, \beta)} \qquad \mathrm{where} \qquad B(\alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}
+\end{equation}
+
+Where, $\Gamma$ defines a gamma distribution function, $\alpha$ is the time period of existence of the species in 100,000 years and $\beta$ is the spatial distance of the fossil from the rainforest in kilometres. Monte-carlo simulations were performed to sample from the distributions to populate the edge costs. A minimum overlap threshold of 10\% is considered for possible transmission of HSV2 from one species to another. 
+
+\subsubsection*{Stochastic modelling of infection transmission}
+The Susceptible - Infection - Recovered (SIR) is one of the most widely used model in epidemiological system. In the stochastic version of the SIR model, the continuous variables are replaced by discrete numbers, and the process rates are replaced by process probabilities. At time `t' the probability of a new susceptible host is infected is modelled as an exponential distribution, which is epidemiologically incorrect for most diseases~\cite{Wearing2005,Bailey1975,sartwell1950distribution}, i.e., the rate of leaving the exposed is independent of the time spent on the host. Wearing et al~\cite{Wearing2005} suggested a more realistic distribution of latent and infectious periods, with a stronger central tendency:
+
+\begin{table*}[!h]
+	\centering
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabulary}{\linewidth}{LCCCC}
+		\# of infectives at time ($t$) & =  & 
+		Initial number of infectives who are still infectious at time ($t$) & + & 
+		Those who have acquired the infection in the time interval $[0, t]$ and are still infectious at time ($t$)			\\ 
+	\end{tabulary}
+\end{table*}
+
+More realistic distributions can be obtained by choosing  probability density function of the infectious period,  p(t) to be a gamma probability density function\cite{Blythe1988,Lloyd2001}.
+
+\subsubsection*{Infection Transmission (HSV2-IT) model}
+This model utilising the temporal overlap between hominin species and their geographic proximity to one another to determine the probability of transmission using a gamma distribution. The probability density function of a gamma distribution is given as:
+
+\begin{equation}
+PDF:\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha - 1} \exp^{-\beta x}
+\end{equation}
+in terms of shape $\alpha$ and rate $\beta$. The parameters shape is defined as the ratio of the time period in 1000 years / distance in kilometers and  rate  is defined as the normalised time period $Y / x$, where $x$ is the time period of the species in 1000 years and $Y$ is the time period of anc-chimpanzees. Monte-carlo simulations were performed to evaluate the combined probability of transmission between species is evaluated as mutually exclusive events based on the probability distributions. 
+
 \section*{Results}
 
 The A* optimal graph traversal algorithm was used to evaluate the most probable intermediary host(s) of HSV2 between the ancestors of modern chimpanzees and bonobos (ancestral-chimpanzees or anc-chimps) and the ancestors of modern humans. Directed Acyclic Graphs (DAGs) linking potential HSV2 transmission hominins were developed, with edges representing the possible direction of transmission between different hominins. Two mathematical models: the Infection Prevalence (HSV2-IP) model and the Infection Transmission (HSV2-IT) model, were developed for estimating the probability of HSV2 infection/transmission between species based on their geo-spatial and temporal distributions and their proximity to rainforest. These probability models were used to populate the DAG edge costs and node heuristics. Bayesian network inference of the DAG was also used to determine the most probable intermediary hosts. Both the A* algorithm~\cref{fig:dag-ip,fig:dag-it} and the Bayesian network inference identified \textit{Homo rudolfensis} as the most probable intermediary host that transmitted HSV2 from ancestral-chimpanzees to the ancestors of modern humans. \Cref{table:hsv2} shows the probable HSV2 intermediary routes and their rankings based on the infection transmission models and Bayesian network inference.
@@ -222,54 +275,7 @@ The high prevalence of HSV2 in central and eastern Africa (see Figure A.1) and i
 
 The time-depth of ancient DNA analysis is dually limited by technology and preservation of DNA. Similarly the archaeological and fossil records suffer from differential rates of preservation and gaps that can never be filled because the material has simply not survived.  Our analysis has allowed the reconstruction of hominin/human-disease interaction well beyond the horizon of ancient DNA and at a level that is invisible to the fossil and archaeological records. Demonstrating the potential for using modern disease genetics to better understand the evolutionary interaction between humans and disease in deep time.
 
-\section*{Methods}
-\subsection*{HSV2 prevalence data, hominin fossil data and chimpanzee and tropical rainforest geographic range data}
 
-We collated African hominin spatial-temporal data on hominin fossil species extant between 100 KYA and 3 MYA. Spatially, latitude and longitude of site location was used to provide a data point for each species. Temporally, dating was used to provide a first appearance datum (FAD) and last appearance datum (LAD) for each species (supplementary data). GIS data on the range of \textit{Pan troglodytes} and \textit{Pan paniscus} was provided by the IUCN Red List~\cite{Oates2008}. Tropical rainforest distribution between 1.4 and 3 MYA was acquired from the K\"{o}ppen-Geiger climate classification dataset~\cite{Peel2007}. This was treated as a proxy for the ancient range of chimpanzees. Data on the prevalence of herpes simplex virus 2 between 2000 and 2015 was taken from the supplementary materials of Looker~\cite{Looker2015}, with additional country data (see supplementary material). 
-
-\subsection*{Network analysis}
-
-To establish the most probable transmission route of HSV2 from chimpanzees to modern humans, it is important to identify potential species that may have been intermediary hosts. At first, hominins present within the 1.4 - 3 MYA confidence window of chimp-hominin transmission were identified. Their distance to tropical rainforest was calculated: only species with fossil remains found within 400 km of tropical rainforest were considered as putative species for initial ancestral-chimp-hominin HSV2 transmission. A matrix of spatio-temporal distances was then calculated to map distances between nearest neighbours of each species and also to calculate their temporal overlap within the fossil record. Network analysis was peformed using AI space graph search and decision network tools~\cite{poole2010artificial}.
-
-\subsubsection*{Optimal path traversal}
-A network of possible transmission routes of HSV2 from ancestral-chimpanzees to humans through different potential hominims was developed as a Directed Cyclic Graph (DAG) $G = (V, E)$ comprising of a set of nodes ($V$), representing potential intermediary hosts, and edges ($E$) connecting the nodes, which represents the direction of transmission between species. Infection Prevalence (HSV2-IP) and Infection Transmission (HSV2-IT) models assign probability value (edge costs) to the DAG utilising the temporal overlap between hominin species and their geographic proximity to rainforest habitat and one another. More details about the probability models are discussed in the next section. A Conditional Probability Table (CPT) is calculated to determine the nodal heuristics. Ancestral-chimpanzees and \textit{Homo erectus} formed the start node and the target node of the DAG. 
-
-The A* pathfinding algorithm~\cite{Hart1968} was used on the DAG to identify the most probable transmission (optimal path) route for HSV2. The A* algorithm is the most widely used path-finding algorithm. A* is an informed search algorithm that searches through all possible paths to the target that yields the smallest cost. This is done by combining information on favouring vertices that are close to the starting point and information on favouring vertices that are close to the goal. At each time-step A* algorithm selects the path at a given vertex $n$ that has the lowest $f(n) = g(n) + h(n)$. Where $g(n)$ represents the exact cost of the path from the starting point to any vertex $n$, and $h(n)$ represents the heuristic estimated cost from vertex $n$ to the goal. A* balances the two as it moves from the starting point to the goal. The A* algorithm evaluates the most probable transmission route, by minimising the traversal costs based on the edge cost and nodal heuristics of the transmission network graph.
-
-\subsubsection*{Bayesian inference}
-A Bayesian network or a belief network is a graphical structure that allows us to represent and reason about an uncertain domain. The nodes are variables, and edges represent direct links between nodes. The process of conditioning (also called probability propagation or inference) is performed via a ``flow of decisions'' through the network, which involves computing the posterior probability distribution for a set of query nodes, given values for some evidence (or observation) nodes. An important consideration in all Bayesian-based methods is the choice of a prior. An empirical Bayesian method that estimates the likelihood of HSV2 infection using a prior beta distribution, which is an approximation to a hierarchical Bayesian approach is adopted~\cite{Murphy2012,Farine2015}. Bayesian networks provide full representations of probability distributions over their variables, which allows to infer upon any subset of variables. A Conditional Probability Table (CPT) is generated for all possible combinations of a dichotomous outcome for each variable (HSV2 infection is true or false). The ``Combined Inference'' approach is adopted to evaluate the probable intermediary hosts, by conditioning the ancestral-chimpanzee and \textit{Homo erectus} nodes for the presence of HSV2. A ``Diagnostic reasoning''~\cite{Korb2003} was carried out to evaluate the most probable intermediate hosts for the transmission of HSV2 from ancestral-chimpanzees to \textit{Homo sapiens}. 
-
-\subsubsection*{HSV2-Infection Prevelance (HSV2-IP) model}
-This model describes the probability of HSV2 infection based on the proximity to the rain forest habitat and the duration (difference between the first and the last appearance datum)  using a beta distribution. The probability density function is defined as:
-
-\begin{equation}
-PDF: \frac{x^{\alpha - 1}(1 - x)^{\beta - 1}}{B(\alpha, \beta)} \qquad \mathrm{where} \qquad B(\alpha, \beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}
-\end{equation}
-
-Where, $\Gamma$ defines a gamma distribution function, $\alpha$ is the time period of existence of the species in 100,000 years and $\beta$ is the spatial distance of the fossil from the rainforest in kilometres. Monte-carlo simulations were performed to sample from the distributions to populate the edge costs. A minimum overlap threshold of 10\% is considered for possible transmission of HSV2 from one species to another. 
-
-\subsubsection*{Stochastic modelling of infection transmission}
-The Susceptible - Infection - Recovered (SIR) is one of the most widely used model in epidemiological system. In the stochastic version of the SIR model, the continuous variables are replaced by discrete numbers, and the process rates are replaced by process probabilities. At time `t' the probability of a new susceptible host is infected is modelled as an exponential distribution, which is epidemiologically incorrect for most diseases~\cite{Wearing2005,Bailey1975,sartwell1950distribution}, i.e., the rate of leaving the exposed is independent of the time spent on the host. Wearing et al~\cite{Wearing2005} suggested a more realistic distribution of latent and infectious periods, with a stronger central tendency:
-
-\begin{table*}[!h]
-	\centering
-	\renewcommand{\arraystretch}{1.5}
-	\begin{tabulary}{\linewidth}{LCCCC}
-		\# of infectives at time ($t$) & =  & 
-		Initial number of infectives who are still infectious at time ($t$) & + & 
- Those who have acquired the infection in the time interval $[0, t]$ and are still infectious at time ($t$)			\\ 
-\end{tabulary}
-\end{table*}
-
-More realistic distributions can be obtained by choosing  probability density function of the infectious period,  p(t) to be a gamma probability density function\cite{Blythe1988,Lloyd2001}.
-
-\subsubsection*{Infection Transmission (HSV2-IT) model}
-This model utilising the temporal overlap between hominin species and their geographic proximity to one another to determine the probability of transmission using a gamma distribution. The probability density function of a gamma distribution is given as:
-
-\begin{equation}
-PDF:\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha - 1} \exp^{-\beta x}
-\end{equation}
-in terms of shape $\alpha$ and rate $\beta$. The parameters shape is defined as the ratio of the time period in 1000 years / distance in kilometers and  rate  is defined as the normalised time period $Y / x$, where $x$ is the time period of the species in 1000 years and $Y$ is the time period of anc-chimpanzees. Monte-carlo simulations were performed to evaluate the combined probability of transmission between species is evaluated as mutually exclusive events based on the probability distributions. 
 
 \section*{Data presentation}
 The distribution maps were created with custom JavaScripts codes using Leaflet.js library [\url{http://leafletjs.com/}] and interactive maps can be found at \url{https://wadhamite.github.io/hsv-mapping}
