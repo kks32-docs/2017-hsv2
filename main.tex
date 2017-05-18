@@ -153,10 +153,15 @@ Sensitivity analysis is performed to identify the impact of the probability dist
 
 \section*{Results}
 
-The A* optimal graph traversal algorithm was used to evaluate the most probable intermediary host(s) of HSV2 between the ancestors of modern chimpanzees and bonobos (ancestral-chimpanzees or anc-chimps) and the ancestors of modern humans. Directed Acyclic Graphs (DAGs) linking potential HSV2 transmission hominins were developed, with edges representing the possible direction of transmission between different hominins. Two mathematical models: the Infection Prevalence (HSV2-IP) model and the Infection Transmission (HSV2-IT) model, were developed for estimating the probability of HSV2 infection/transmission between species based on their geo-spatial and temporal distributions and their proximity to rainforest. These probability models were used to populate the DAG edge costs and node heuristics. Bayesian network inference of the DAG was also used to determine the most probable intermediary hosts. Both the A* algorithm~\cref{fig:dag-ip,fig:dag-it} and the Bayesian network inference identified \textit{Homo rudolfensis} as the most probable intermediary host that transmitted HSV2 from ancestral-chimpanzees to the ancestors of modern humans. \Cref{table:hsv2} shows the probable HSV2 intermediary routes and their rankings based on the infection transmission models and Bayesian network inference.
+The results from the Bayesian inference and the optimal path traversal using the Infection Prevalence and Infection Transmission models are presented below.
 
+\subsection*{Bayesian inference}
+By conditioning anc-chimps and H. erectus for the presence of HSV2, the combined Bayesian inference of the DAG reveals \textit{A. afarensis} (90\%), \textit{H. habilis} (67.8\%), \textit{P. boisei}  (50\%), and \textit{H. rudolfensis} (55.8\%) to be the likely intermediary hosts for the transmission of HSV2.
 
-\begin{table}
+\subsection*{Optimal path traversal}
+The optimal traversal route of the DAG for HSV2 transmission was modelled using the Infection Prevalence and the Infection Transmission models. The A* algorithm using the weighted DAGs from both models identified \textit{Paranthropus boisei} as the most probable intermediary hosts that transmitted HSV2 from anc-chimps to the ancestors of modern humans (see~\cref{fig:dag-ip}). In addition to the direct transmission of HSV2 from anc-chimps to \textit{P. boisei}, the Infection Transmission model also identified Homo habilis as an intermediary host that transmitted HSV2 to \textit{Paranthropus boisei}, which subsequently transmitted to ancestors modern humans(see~\cref{fig:dag-it}).~\Cref{table:hsv2} shows the probable HSV2 intermediary routes and their rankings based on the edge weights from the probabilistic models. 
+
+\begin{table}[!tbhp]
 \caption{Probable HSV2 transmission routes}
 \centering
 \renewcommand{\arraystretch}{1.5}
@@ -184,8 +189,16 @@ anc-chimp $\Rightarrow$ \textit{H. rudolfensis} $\Rightarrow$ \textit{H. erectus
 \end{tabular}
 \end{table}
 
+\subsection*{Sensitivity analysis}
+We performed sensitivity analysis allowing the input parameters of the probabilistic distributions for both the models to vary by 10\%. A total of 2.3 million analyses were performed for each model by sampling 50,000 times from the respective probability distributions for each edge. 
 
-\begin{table}
+\subsubsection*{HSV2-IP model}
+The input parameters to this model: distance to the rainforest and the overlap in the time-period was allowed to vary by 10\%. Sensitivity analysis of HSV2-IP model always predicted the transmission route as `anc-chimps $\rightarrow$ \textit{P. boisei} $\rightarrow$ \textit{H. erectus}'. The average path cost was 0.587, and it varied between 0.526 and 0.649. The distribution of path costs obtained from the sensitivity analysis is shown in~\cref{fig:beta}. The total-order and first-order Sobol indices of the `anc-chimp $\rightarrow$ \textit{boisei}' path is 4.53E-2 and 4.53E-2, respectively. The `\textit{P. boisei} $\rightarrow$ \textit{H. erectus}' path has a total index of 9.55E-1 and a first-order index of 9.55E-1. All other paths had negligible or zero index values. When the critical path through \textit{P. bosei} is not available, the transmission happened directly from anc-chimps to \textit{H. erectus} through \textit{H. habilis} (normalised path costs 1.08 - 1.32 of the critical path cost) for 67\% of the cases and directly through \textit{H. rudolfensis} (normalised path costs of 1.11 - 1.32 of the critical path cost) for the remaining 33\%.
+
+\subsubsection*{HSV2-IT model}
+In this analysis, the input parameters of the gamma distribution: the proximity of species and the time-period overlap between species was varied by 10\%. The distribution of individual path costs used to populate the edge costs of the DAG used in the sensitivity analysis are shown in~\cref{fig:gamma-paths}. Sensitivity analysis predicted a primary transmission route (60\% of the cases) of `anc-chimps $\rightarrow$ H. habilis $\rightarrow$ P. boisei $\rightarrow$ H. erectus` and a secondary transmission route (remaining 40\%) through `anc-chimps $\rightarrow$ P. boisei $\rightarrow$ H. erectus`. The distribution of the shortest path costs for both the primary and secondary transmission routes are shown in~\cref{fig:gamma}. The Sobol indices for the HSV2-IT model are presented in~\cref{table:sobol}. 
+
+\begin{table}[!tbhp]
 \caption{Sobol indices of transmission paths for HSV2-IT model using gamma distribution}
 \centering
 \renewcommand{\arraystretch}{1.5}
@@ -206,14 +219,14 @@ anc-chimp $\Rightarrow$ \textit{H. habilis} & 0.519 & 0.334 \\
 \end{tabulary}
 \end{table}
 
-\begin{figure}
+\begin{figure}[!tbhp]
   \centering
   \includegraphics[width=\textwidth]{figs/dag-ip}
   \caption{the A* shortest path route(s) for the Infection Prevalence model. The lines with arrows are the possible transmission paths. The values on the lines are the edge costs (inverse probability of transmission). This model predicts that the host switch of HSV2 occurred through the route ancestral-chimps, \textit{P. boisei} and \textit{H. erectus}. The route remained unchanged in the sensitivity analysis.}
   \label{fig:dag-ip}   
 \end{figure}  
 
-\begin{figure}
+\begin{figure}[!tbhp]
   \centering
   \includegraphics[width=\textwidth]{figs/dag-it}
   \caption{the A* shortest route for the Infection Transmission model. The lines with arrows are the possible transmission paths. The values on the lines are the edge costs (inverse probability of transmission). This model predicts that the host switch of HSV2 occurred through the primary route of ancestral-chimps, \textit{H. Habilis}, \textit{P. boisei} and \textit{H. erectus}. Sensitivity analysis revealed the primary route occurred 60\% as opposed to the secondary route of ancestral-chimps, \textit{P. boisei} and \textit{H. erectus} (which occurred the remaining 40\%).}
@@ -269,7 +282,7 @@ Each histogram shows the distribution of edge costs for the IT model of HSV2 tra
 
 Fossils from four genera (Ardipithecus, Kenyanthropus, Orrorin and Sahelanthropus) were excluded from the analysis on the basis that there is no fossil evidence that they persisted after 3 MYA. Our range of candidate species can be restricted to those in supplementary Table A.1.
 
-We then used further data on geo-temporal proximity of one species to another to develop mathematical models to quantify the probability of HSV2 infection transmission so as to assess the likelihood that each of these species further transmitted HSV2 to another hominin (see methodology section for further detail of the model). If HSV2 was transmitted to \textit{Homo erectus}, parsimony militates against the need for a further cross-species transmission event to be invoked to explain the infection of modern humans by HSV2. Simple vertical mother-to-child or horizontal (sexual) transmission of the virus through the genus Homo from this point would be sufficient as the ancestor-descendent path from \textit{Homo erectus} to \textit{Homo sapiens} is relatively secure~\cite{Maslin2015}.
+We then used further data on geo-temporal proximity of one species to another to develop mathematical models to quantify the probability of HSV2 infection transmission so as to assess the likelihood that each of these species further transmitted HSV2 to another hominin (see methodology section for further detail of the model). If HSV2 was transmitted to \textit{Homo erectus}, parsimony militates against the need for a further cross-species transmission event to be invoked to explain the infection of modern humans by HSV2. Simple vertical mother-to-child or horizontal (sexual) transmission of the virus through the genus Homo from this point would be sufficient as the ancestor-descendent path from \textit{Homo erectus} to \textit{Homo sapiens} is relatively secure~\citep{Maslin2015}.
 
 \section*{Discussion}
 \subsection*{Transmission of HSV2}
