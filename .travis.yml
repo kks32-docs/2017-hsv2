@@ -1,11 +1,9 @@
 sudo: required
 dist: trusty
 before_install:
-   - sudo add-apt-repository ppa:jonathonf/texlive -y
    - sudo apt-get update
-   - sudo apt-get purge texlive* latex*
 install:
-   - sudo apt-get -y -f install texlive-full
+   - sudo apt-get -y install texlive-full
 
 script:
    - latexmk -pdf main.tex
