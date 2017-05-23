@@ -3,7 +3,7 @@ dist: trusty
 before_install:
    - sudo apt-get update
 install:
-   - sudo apt-get -y install texlive-full
+   - sudo apt-get -y install texlive-full biber
 
 script:
    - latexmk -pdf main.tex
