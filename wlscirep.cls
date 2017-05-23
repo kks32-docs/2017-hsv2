@@ -9,6 +9,8 @@
 % \ProvidesClass{wlscirep}[18/03/2016, v1.1]
 \ProvidesClass{wlscirep}[03/11/2016, v1.2]
 \RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{textcomp}
 \RequirePackage[english]{babel}
 
 \RequirePackage{ifthen}
