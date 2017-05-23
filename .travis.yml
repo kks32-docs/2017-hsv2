@@ -6,6 +6,6 @@ install:
    - sudo apt-get -y install texlive-full biber
 
 script:
-   - latexmk -pdf main.tex
+   - latexmk -pdf -f main.tex
 notifications:
   slack: kks32:vsrIj5wVAmBbEQDpldE2GxcH
