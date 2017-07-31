@@ -89,9 +89,12 @@ Before \textit{Homo erectus} it is unclear which hominins are the direct ancesto
 HSV2 is found in all living populations~\citep{Looker2015}, is accepted as having an African origin~\citep{Koelle2017, Burrel2017}, and has patterns of genetic divergence consistent with having diverged with human populations as they spread out of Africa~\citep{Koelle2017}. Current genetic, archaeological and fossil evidence suggests 100 KYA as a plausible (although not universally accepted) earliest date for anatomically modern humans (AMH) to have left Africa ~\cite{MirazonLahr2016}. We therefore infer that HSV2 must have been in the population of AMH before they left Africa, in order to take it with them when migrating to the rest of the world.
 
 \section*{Methods}
+
+The process of identifying the most probable intermediary species that transmitted proto-HSV2 (henceforth HSV2) from anc-chimps to modern humans involves four steps: (a) data acquisition, which involves collecting information on the prevalence of HSV2 in Africa, fossil records of potential intermediary hominins, their geographical range and time-period, and the extent of tropical rainforest data, (b) network generation, where a network of possible transmission paths of HSV2 from anc-chimps to humans through different hominins is created, (c) probabilistic network analysis, which involves assigning weights to different transmission paths on the graph network based on a certain probability distribution, and (d) optimal path traversal, which evaluates the shortest path from anc-chimps to modern humans based on the probabilistic weights assigned to different paths.
+
 \subsection*{HSV2 prevalence data, hominin fossil data and chimpanzee and tropical rainforest geographic range data}
 
-HSV2 is most closely related to ChHV1 which infected the ancestors of modern chimpanzees. The GIS data on the range of modern \textit{Pan troglodytes} and \textit{Pan paniscus},  provided by the IUCN Red List~\citep{Oates2008}, is shown in~\cref{fig:chimpanzee}.  Only one ancestral chimpanzee fossil, dated to c. 500 KYA, is currently known~\citep{McBrearty2005}. This means that the habitat range of anc-chimps is not directly measurable from the fossil record but is inferred to be a larger geographical range. Therefore, we have used the paleo-tropical rainforest range during the period of 1.4 - 3 MYA K\"{o}ppen-Geiger climate classification dataset~\cite{Peel2007} as a proxy for the ancient range of chimpanzees and combined this with data based on modern great ape distribution patterns and range size estimates~\citep{MyersThompson2003}, and is shown in~\cref{fig:rainforest}. 
+HSV2 is most closely related to ChHV1 which infected the ancestors of modern chimpanzees. The GIS data on the range of modern \textit{Pan troglodytes} and \textit{Pan paniscus},  provided by the IUCN Red List~\citep{Oates2008}, is shown in~\cref{fig:chimpanzee-rainforest}.  Only one ancestral chimpanzee fossil, dated to c. 500 KYA, is currently known~\citep{McBrearty2005}. This means that the habitat range of anc-chimps is not directly measurable from the fossil record but is inferred to be a larger geographical range than that of modern Pan. We can use the GIS data on the range of modern Pan troglodytes and Pan paniscus, provided by the IUCN Red List (Oates et al. 2008), shown in Figure 1, to make some inferences about the range of anc-chimps, but a measure of paleo-tropical rainforest range is likely to be a better proxy for the range of anc-chimps~\cite{Elton2008}. Therefore, we have used the paleo-tropical rainforest range during the period of 1.4 - 3 MYA K\"{o}ppen-Geiger climate classification dataset~\cite{Peel2007} as a proxy for the ancient range of chimpanzees and combined this with data based on modern great ape distribution patterns and range size estimates~\citep{MyersThompson2003}, and is shown in~\cref{fig:chimpanzee-rainforest}. 
 
 To identify which species could have been involved in the host-switch of HSV2 from the ancestors of chimpanzees to the ancestors of modern humans, we collated spatio-temporal data on African hominin fossil species extant between 100 KYA and 3 MYA. Latitude and longitude of site location was used to provide a spatial data point for each species. Temporally, published fossil dating evidence was used to provide a first appearance datum (FAD) and last appearance datum (LAD) for each species (see supplementary Table 1).
 
@@ -234,22 +237,11 @@ anc-chimp $\Rightarrow$ \textit{H. habilis} & 0.519 & 0.334 \\
 \end{figure}     
 
 \begin{figure}
-\begin{subfigure}[b]{\textwidth}
   \centering
-  \includegraphics[width=\textwidth]{figs/chimpanzee}
-  \caption{Distribution of extant chimpanzee (Pan troglodytes) and bonobo (Pan paniscus) populations [IUCN redlist http://maps.iucnredlist.org/map.html?id=15933, http://maps.iucnredlist.org/map.html?id=15932]. The locations of hominin fossils [supplementary table 1] are shown with markers. The colour of the marker indicates the hominin genus; the symbol represents the species.}
-  \label{fig:chimpanzee}
-\end{subfigure}
-\end{figure}
-\begin{figure}
-\ContinuedFloat
-\begin{subfigure}[b]{\textwidth}
-  \centering
-  \includegraphics[width=\textwidth]{figs/rainforest}
-  \caption{Location of hominin fossils relative to ancient minimum and maximum rainforest distributions \citep{Peel2007}. These figure are available interactively: \url{https://wadhamite.github.io/hsv-mapping/}.}
-  \label{fig:rainforest}
-\end{subfigure}
-  \caption{Location of hominin fossils, extant chimpanzees, and ancient minimum and maximum rainforest distributions.}
+  \includegraphics[width=\textwidth]{figs/chimpanzee-rainforest}
+  \caption{
+  	Map showing the distribution of extant chimpanzee (Pan troglodytes) and bonobo (Pan paniscus) populations [IUCN redlist http://maps.iucnredlist.org/map.html?id=15933, http://maps.iucnredlist.org/map.html?id=15932]; the locations of hominin fossils [supplementary table 1] are shown with markers. The colour of the marker indicates the hominin genus; the symbol represents the species. The map also shows the location of hominin fossils relative to ancient minimum and maximum rainforest distributions~\citep{Peel2007}. This figure is available interactively: \url{https://wadhamite.github.io/hsv2-map/}{https://wadhamite.github.io/hsv2-map/}.}
+  \label{fig:chimpanzee-rainforest}
 \end{figure}
 
 \begin{figure}
@@ -273,7 +265,7 @@ Each histogram shows the distribution of edge costs for the IT model of HSV2 tra
 
 \begin{figure}
   \centering
-  \includegraphics[width=\textwidth]{figs/gamm_path_costs}
+  \includegraphics[width=\textwidth]{figs/gamma_path_costs}
   \caption{Path costs distribution for Infection Transmission model. Each histogram shows the distribution of path costs for the IT model of HSV2 transmission. Colour contours indicate the number of occurrences of a path cost in the sensitivity analysis. The optimal transmission route is ‘anc-chimp $\Rightarrow$ \textit{H. habilis} $\Rightarrow$ \textit{P. boisei} $\Rightarrow$ \textit{H. erectus}’. (a) Total distribution of path costs for HSV2-IT model, (b) distribution path costs for the primary transmission route (‘anc-chimp $\Rightarrow$ \textit{H. habilis} $\Rightarrow$ \textit{P. boisei} $\Rightarrow$ \textit{H. erectus}’), and (c) distribution path costs for the  secondary transmission route (‘anc-chimp $\Rightarrow$ \textit{P. boisei} $\Rightarrow$ \textit{H. erectus}’).}
   \label{fig:gamma}   
 \end{figure}     
