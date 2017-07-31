@@ -167,13 +167,13 @@ Sensitivity analysis is performed to identify the impact of the probability dist
 
 \section*{Results}
 
-The results from the Bayesian inference and the optimal path traversal using the Infection Prevalence and Infection Transmission models are presented below.
+The results from the Bayesian inference and the optimal path traversal using the Infection Prevalence and Infection Transmission models are presented below, beginning with the Bayesian inference analysis, the optimal path traversal results and finally the sensitivity analysis of the different models.
 
 \subsection*{Bayesian inference}
-By conditioning anc-chimps and H. erectus for the presence of HSV2, the combined Bayesian inference of the DAG reveals \textit{A. afarensis} (90\%), \textit{H. habilis} (67.8\%), \textit{P. boisei}  (50\%), and \textit{H. rudolfensis} (55.8\%) to be the likely intermediary hosts for the transmission of HSV2.
+By conditioning anc-chimps and H. erectus for the presence of HSV2, the combined Bayesian inference of the DAG reveals \textit{A. afarensis} (90\%), \textit{H. habilis} (67.8\%), \textit{P. boisei}  (50\%), and \textit{H. rudolfensis} (55.8\%) to be the likely intermediary hosts for the transmission of HSV2. These are the most probable hosts to have acquired HSV2, and a transmission path through these hosts is more likely.
 
 \subsection*{Optimal path traversal}
-The optimal traversal route of the DAG for HSV2 transmission was modelled using the Infection Prevalence and the Infection Transmission models. The A* algorithm using the weighted DAGs from both models identified \textit{Paranthropus boisei} as the most probable intermediary hosts that transmitted HSV2 from anc-chimps to the ancestors of modern humans (see~\cref{fig:dag-ip}). In addition to the direct transmission of HSV2 from anc-chimps to \textit{P. boisei}, the Infection Transmission model also identified Homo habilis as an intermediary host that transmitted HSV2 to \textit{Paranthropus boisei}, which subsequently transmitted to ancestors modern humans(see~\cref{fig:dag-it}).~\Cref{table:hsv2} shows the probable HSV2 intermediary routes and their rankings based on the edge weights from the probabilistic models. 
+The optimal traversal path of the DAG for HSV2 transmission was modelled using the Infection Prevalence and the Infection Transmission models. The A* algorithm using the weighted DAGs from both models identified \textit{Paranthropus boisei} as the most probable intermediary hosts that transmitted HSV2 from anc-chimps to the ancestors of modern humans (see~\cref{fig:dag-ip}). In addition to the direct transmission of HSV2 from anc-chimps to \textit{P. boisei}, the Infection Transmission model also identified Homo habilis as an intermediary host that transmitted HSV2 to \textit{P. boisei}, which subsequently transmitted to the ancestors of modern humans (see~\cref{fig:dag-it}).~\Cref{table:hsv2} shows the probable HSV2 intermediary paths and their rankings based on the edge weights from the probabilistic models. 
 
 \begin{table}[!tbhp]
 \caption{Probable HSV2 transmission routes}
