@@ -35,6 +35,7 @@
 \usepackage{tabulary, booktabs, longtable, ltcaption, ltabptch}
 %\usepackage[referable]{threeparttablex}
 \usepackage{gensymb}
+\usepackage{lscape}
 \usepackage{subcaption}
 \captionsetup{compatibility=false}
 
@@ -328,14 +329,6 @@ The authors would like to thank C Ruis (University College London), and JB Ramon
 \renewcommand\thetable{A.\arabic{figure}}    
 \setcounter{table}{0} 
 
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=\textwidth]{figs/fossils}
-	\caption{Map showing the prevalence of HSV2 in Africa, using data from Looker (2015). The locations of hominin fossils [supplementary table 1] are shown with markers. The colour of the marker indicates the hominin genus; the symbol represents the species. 
-This figure is available interactively: \url{https://wadhamite.github.io/hsv2-map/}}
-	\label{fig:hsv2}   
-\end{figure}  
-
 \clearpage
 \centering
 \textbf{Table A.1.} Fossil hominins with the potential to acquire - HSV2 from ancestral chimpanzee\\
@@ -411,5 +404,86 @@ This figure is available interactively: \url{https://wadhamite.github.io/hsv2-ma
 	Groves CP and Mazák V 1975 An approach to the taxonomy of the Hominidae: Gracile Villafranchian hominids of Africa. \textit{Casopis pro Mineralogii Geologii 20: 225-247.} \\
 
 \end{ltabulary}
+
+\begin{landscape}
+\begin{table}[!h]
+	\centering
+	\caption{Matrix of separation distance (in kms) between hominins. Red indicates a longer distance of separation, while dark-
+		green indicates closer proximity between species. When the the time-periods of two hominins do not overlap, they are represented as `-`, i.e., there is no possibility of transmission, hence the separation distance between those hominins are not computed.}
+	\includegraphics[width=\textwidth]{figs/distance}
+	\label{table:distance}   
+\end{table}  
+
+\begin{table}[!h]
+	\centering
+	\label{table:time}  
+	\caption{Matrix of temporal overlap between hominins (time in Myr). Red indicates least amount of over-lap, while dark green
+		shows the most time-period overlap between hominins. No overlaps in the time-periods of hominins are shown as `-`.}
+	\includegraphics[width=\textwidth]{figs/time}
+ 
+\end{table}  
+\end{landscape}
+
+\begin{table}
+	\centering
+	\label{table:cpt-boisei}  
+	\caption{The probability of transmission of HSV2 from anc-chimps, \textit{H. africanus}, \textit{H. habilis} and \textit{H. rudolfensis} to \textit{P. boisei} are computed as 0.954, 0.096, 0.996 and 0.34 respectively, using a beta distribution. The Conditional Probability Table for \textit{P. boisei} is shown below.}
+	\begin{tabular}{l l l l c c}
+		\toprule
+		\textit{H. africanus}	&	\textit{H. habilis}	&	\textit{H. rudolfensis}	&	anc-chimps	&	True	&	False	\\
+		\midrule
+		True	&	True	&	True	&	True	&	0.9963	&	0.0037	\\
+		True	&	True	&	True	&	False	&	0.0326	&	0.9674	\\
+		True	&	True	&	False	&	True	&	0.0914	&	0.9086	\\
+		True	&	True	&	False	&	False	&	0.0959	&	0.9041	\\
+		True	&	False	&	True	&	True	&	0.0312	&	0.9688	\\
+		True	&	False	&	True	&	False	&	0.0327	&	0.9673	\\
+		True	&	False	&	False	&	True	&	0.0918	&	0.9082	\\
+		True	&	False	&	False	&	False	&	0.09622	&	0.9038	\\
+		False	&	True	&	True	&	True	&	0.3229	&	0.6771	\\
+		False	&	True	&	True	&	False	&	0.3385	&	0.6615	\\
+		False	&	True	&	False	&	True	&	0.9501	&	0.0499	\\
+		False	&	True	&	False	&	False	&	0.9963	&	0.0037	\\
+		False	&	False	&	True	&	True	&	0.3241	&	0.6759	\\
+		False	&	False	&	True	&	False	&	0.33981	&	0.66019	\\
+		False	&	False	&	False	&	True	&	0.95368	&	0.04632	\\
+		False	&	False	&	False	&	False	&	0	&	1	\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=\textwidth]{figs/fossils}
+	\caption{Map showing the prevalence of HSV2 in Africa, using data from Looker (2015). The locations of hominin fossils [supplementary table 1] are shown with markers. The colour of the marker indicates the hominin genus; the symbol represents the species. 
+		This figure is available interactively: \url{https://wadhamite.github.io/hsv2-map/}}
+	\label{fig:hsv2}   
+\end{figure}  
+
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}[b]{0.7\textwidth}
+		\centering
+		\includegraphics[width=0.7\textwidth]{figs/beta-chimp}
+		\caption{anc-chimp}
+		\label{fig:beta-chimp}   
+	\end{subfigure} \\       
+	\begin{subfigure}[b]{0.7\textwidth}
+		\centering
+		\includegraphics[width=0.7\textwidth]{figs/beta-boisei}
+		\caption{\textit{P. boisei}}
+		\label{fig:beta-boisei}
+	\end{subfigure}
+	\caption{Probability density of anc-chimps and \textit{P. boisei} being infected with HSV2 and transmitting the virus. This figure shows a single run of a Monte Carlo simulation (shown as a blue line). In a single run of a Monte-Carlo simulation, a random probability of transmission of HSV2 from the beta-distribution for anc-chimp is obtained as 0.97 ($P(A)$), while a probability of \textit{P. boisei} being infected is obtained as 0.9375 ($P(B)$). The combined probability is the probability of transmission from anc-chimps to \textit{P. boisei}, $P(A and B)$ which is 0.909. In this study, 1000 runs of MC simulations are carried out and the average probability of the anc-chimp to \textit{P. boisei} path is evaluated as 0.937.}
+	\label{fig:chimp-boisei}   
+\end{figure}  
+
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figs/gamma-chimp}
+	\caption{ A typical gamma distribution of probability density of transmission from anc-chimps.The shape parameter $\alpha$ is defined as the ratio of the time period in 1000 years / distance in kilometres ( $\alpha$ = 6) and the rate parameter $\beta$ (= 10) is defined as the normalised time period $Y / x$ where $x$ is the time period of the species in 1000 years and $Y$ is the time period of anc-chimps.}
+	\label{fig:chimp}   
+\end{figure}  
+
 
 \end{document}
