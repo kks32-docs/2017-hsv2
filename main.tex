@@ -204,13 +204,20 @@ anc-chimp $\Rightarrow$ \textit{H. rudolfensis} $\Rightarrow$ \textit{H. erectus
 \end{table}
 
 \subsection*{Sensitivity analysis}
-We performed sensitivity analysis allowing the input parameters of the probabilistic distributions for both the models to vary by 10\%. A total of 2.3 million analyses were performed for each model by sampling 50,000 times from the respective probability distributions for each edge. 
+We performed sensitivity analysis allowing the input parameters of the probabilistic distributions for both the models to vary by 10\%. A total of 2.3 million analyses were performed for each model by sampling 50,000 times from the respective probability distributions for each edge. The cost of transmission of HSV2 along all possible paths (path costs) from anc-chimps to \textit{H. erectus} were calculated. The path cost represents the ease of transmitting HSV2 through the path. A path cost is calculated as an arithmetic sum of the inverse probability of transmission through each edge in a given transmission path. The most probable transmission path is always the one that has the lowest cost (i.e., the sum of the probabilities of all of the edges in the path is the highest). 
 
 \subsubsection*{HSV2-IP model}
-The input parameters to this model: distance to the rainforest and the overlap in the time-period was allowed to vary by 10\%. Sensitivity analysis of HSV2-IP model always predicted the transmission route as `anc-chimps $\rightarrow$ \textit{P. boisei} $\rightarrow$ \textit{H. erectus}'. The average path cost was 0.587, and it varied between 0.526 and 0.649. The distribution of path costs obtained from the sensitivity analysis is shown in~\cref{fig:beta}. The total-order and first-order Sobol indices of the `anc-chimp $\rightarrow$ \textit{boisei}' path is 4.53E-2 and 4.53E-2, respectively. The `\textit{P. boisei} $\rightarrow$ \textit{H. erectus}' path has a total index of 9.55E-1 and a first-order index of 9.55E-1. All other paths had negligible or zero index values. When the critical path through \textit{P. bosei} is not available, the transmission happened directly from anc-chimps to \textit{H. erectus} through \textit{H. habilis} (normalised path costs 1.08 - 1.32 of the critical path cost) for 67\% of the cases and directly through \textit{H. rudolfensis} (normalised path costs of 1.11 - 1.32 of the critical path cost) for the remaining 33\%.
+The input parameters to this model were: distance to the rainforest and the overlap in the time-period was allowed to vary by 10\%. Sensitivity analysis of HSV2-IP model always predicted the transmission route as `anc-chimps $\rightarrow$ \textit{P. boisei} $\rightarrow$ \textit{H. erectus}'.  The average path cost was 0.587, and it varied between 0.526 and 0.649. The distribution of path costs obtained from the sensitivity analysis is shown in~\cref{fig:beta}.  The total-order and first-order Sobol indices of the `anc-chimp $\rightarrow$ \textit{boisei}’ path is 4.53E-2 and 4.53E-2, respectively. The `\textit{P. boisei} $\rightarrow$ \textit{H. erectus}' path has a total index of 9.55E-1 and a first-order index of 9.55E-1. All other paths had negligible or zero index values. The frequency of occurrence of different transmission paths from the sensitivity analyses are summarised in Supplementary Table 5. When the critical path, defined as the path that costs the least to traverse, through \textit{P. bosei} is not available, the transmission path from anc-chimps to \textit{H. erectus} was through H. habilis (normalised path costs, defined as the ratio of the path cost to the critical path cost in the graph, 1.08 - 1.32 of the critical path cost) for 67\% of the cases and through \textit{H. rudolfensis} (normalised path costs of 1.11 - 1.32 of the critical path cost) for the remaining 33\%.
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=\textwidth]{figs/dag-ip}
+	\caption{the A* shortest path route(s) for the Infection Prevalence model. The lines with arrows are the possible transmission paths. The values on the lines are the edge costs (inverse probability of transmission). This model predicts that the host switch of HSV2 occurred through the route ancestral-chimps, \textit{P. boisei} and \textit{H. erectus}. The route remained unchanged in the sensitivity analysis.}
+	\label{fig:dag-ip}   
+\end{figure}
 
 \subsubsection*{HSV2-IT model}
-In this analysis, the input parameters of the gamma distribution: the proximity of species and the time-period overlap between species was varied by 10\%. The distribution of individual path costs used to populate the edge costs of the DAG used in the sensitivity analysis are shown in~\cref{fig:gamma-paths}. Sensitivity analysis predicted a primary transmission route (60\% of the cases) of `anc-chimps $\rightarrow$ H. habilis $\rightarrow$ P. boisei $\rightarrow$ H. erectus` and a secondary transmission route (remaining 40\%) through `anc-chimps $\rightarrow$ P. boisei $\rightarrow$ H. erectus`. The distribution of the shortest path costs for both the primary and secondary transmission routes are shown in~\cref{fig:gamma}. The Sobol indices for the HSV2-IT model are presented in~\cref{table:sobol}. 
+In this analysis, the input parameters of the gamma distribution were: the proximity of species and the time-period overlap between species, varied by 10\%. The distribution of individual path costs used to populate the edge costs of the DAG used in the sensitivity analysis are shown in~\cref{fig:gamma-paths}. Sensitivity analysis predicted a primary transmission path (60\% of the cases) of lysis predicted a primary transmission route (60\% of the cases) of `anc-chimps $\rightarrow$ H. habilis $\rightarrow$ P. boisei $\rightarrow$ H. erectus` and a secondary transmission path (remaining 40\%) through  `anc-chimps $\rightarrow$ P. boisei $\rightarrow$ H. erectus`. The distribution of the shortest path costs for both the primary and secondary transmission paths are shown in~\cref{fig:gamma}. The Sobol indices for the HSV2-IT model are presented in~\cref{table:sobol}. 
 
 \begin{table}[!tbhp]
 \caption{Sobol indices of transmission paths for HSV2-IT model using gamma distribution}
@@ -233,12 +240,7 @@ anc-chimp $\Rightarrow$ \textit{H. habilis} & 0.519 & 0.334 \\
 \end{tabulary}
 \end{table}
 
-\begin{figure}[!tbhp]
-  \centering
-  \includegraphics[width=\textwidth]{figs/dag-ip}
-  \caption{the A* shortest path route(s) for the Infection Prevalence model. The lines with arrows are the possible transmission paths. The values on the lines are the edge costs (inverse probability of transmission). This model predicts that the host switch of HSV2 occurred through the route ancestral-chimps, \textit{P. boisei} and \textit{H. erectus}. The route remained unchanged in the sensitivity analysis.}
-  \label{fig:dag-ip}   
-\end{figure}  
+  
 
 \begin{figure}[!tbhp]
   \centering
@@ -247,7 +249,7 @@ anc-chimp $\Rightarrow$ \textit{H. habilis} & 0.519 & 0.334 \\
   \label{fig:dag-it}   
 \end{figure}     
 
-\begin{figure}
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{figs/chimpanzee-rainforest}
   \caption{
@@ -255,7 +257,7 @@ anc-chimp $\Rightarrow$ \textit{H. habilis} & 0.519 & 0.334 \\
   \label{fig:chimpanzee-rainforest}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{figs/beta_path_costs}
   \caption{Path costs distribution for Infection Prevalence model. The shortest path is ‘anc-chimp $\Rightarrow$ \textit{P. boisei} $\Rightarrow$ \textit{H. erectus}’ with an average path cost 0.587.}
@@ -264,7 +266,7 @@ anc-chimp $\Rightarrow$ \textit{H. habilis} & 0.519 & 0.334 \\
 
 
 
-\begin{figure}
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.9\textwidth]{figs/gamma_individual_path_costs}
   \caption{ Distribution of selected edge costs for Infection Transmission model. 
@@ -274,18 +276,13 @@ Each histogram shows the distribution of edge costs for the IT model of HSV2 tra
 
 
 
-\begin{figure}
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{figs/gamma_path_costs}
   \caption{Path costs distribution for Infection Transmission model. Each histogram shows the distribution of path costs for the IT model of HSV2 transmission. Colour contours indicate the number of occurrences of a path cost in the sensitivity analysis. The optimal transmission route is ‘anc-chimp $\Rightarrow$ \textit{H. habilis} $\Rightarrow$ \textit{P. boisei} $\Rightarrow$ \textit{H. erectus}’. (a) Total distribution of path costs for HSV2-IT model, (b) distribution path costs for the primary transmission route (‘anc-chimp $\Rightarrow$ \textit{H. habilis} $\Rightarrow$ \textit{P. boisei} $\Rightarrow$ \textit{H. erectus}’), and (c) distribution path costs for the  secondary transmission route (‘anc-chimp $\Rightarrow$ \textit{P. boisei} $\Rightarrow$ \textit{H. erectus}’).}
   \label{fig:gamma}   
 \end{figure}     
 
-
-
-Fossils from four genera (Ardipithecus, Kenyanthropus, Orrorin and Sahelanthropus) were excluded from the analysis on the basis that there is no fossil evidence that they persisted after 3 MYA. Our range of candidate species can be restricted to those in supplementary Table A.1.
-
-We then used further data on geo-temporal proximity of one species to another to develop mathematical models to quantify the probability of HSV2 infection transmission so as to assess the likelihood that each of these species further transmitted HSV2 to another hominin (see methodology section for further detail of the model). If HSV2 was transmitted to \textit{Homo erectus}, parsimony militates against the need for a further cross-species transmission event to be invoked to explain the infection of modern humans by HSV2. Simple vertical mother-to-child or horizontal (sexual) transmission of the virus through the genus Homo from this point would be sufficient as the ancestor-descendent path from \textit{Homo erectus} to \textit{Homo sapiens} is relatively secure~\citep{Maslin2015}.
 
 \section*{Discussion}
 \subsection*{Transmission of HSV2}
